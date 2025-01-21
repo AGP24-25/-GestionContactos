@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnAñadContac = new Button();
+            btnEliminarContacto = new Button();
             SuspendLayout();
             // 
             // btnAñadContac
@@ -41,11 +42,22 @@
             btnAñadContac.UseVisualStyleBackColor = true;
             btnAñadContac.Click += btnAñadContac_Click;
             // 
+            // btnEliminarContacto
+            // 
+            btnEliminarContacto.Location = new Point(225, 59);
+            btnEliminarContacto.Name = "btnEliminarContacto";
+            btnEliminarContacto.Size = new Size(114, 59);
+            btnEliminarContacto.TabIndex = 1;
+            btnEliminarContacto.Text = "Eliminar Contacto";
+            btnEliminarContacto.UseVisualStyleBackColor = true;
+            btnEliminarContacto.Click += btnEliminarContacto_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnEliminarContacto);
             Controls.Add(btnAñadContac);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +67,6 @@
         #endregion
 
         private Button btnAñadContac;
+        private Button btnEliminarContacto;
     }
 }

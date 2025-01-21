@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic;
+using System.Runtime.Intrinsics.X86;
 
 namespace GestionContactos
 {
@@ -29,7 +30,7 @@ namespace GestionContactos
                     rep = ComprobarIguales(aux, vNomb);
                     if (!rep)
                     {
-                        vNomb[i] = aux;                        
+                        vNomb[i] = aux;
                         vTelef[i] = Interaction.InputBox("Introduzca telefono: ");
                     }
                     else
@@ -60,7 +61,7 @@ namespace GestionContactos
                 {
                     MessageBox.Show("Persona ya introducida.");
                 }              
-            }   */                    
+            }   */
         }
 
         bool ComprobarIguales(string aux, string[] vNomb)
@@ -76,11 +77,32 @@ namespace GestionContactos
             return iguales;
         }
 
+        void EliminarContacto(string[] vNombre, string[] vTelef)
+        {
+            string nombre;
+            bool parar = false;
+            nombre = Interaction.InputBox("Introduzca nombre a borrar: ");
+            for (int i = 0; i < Tam && !parar; i++)
+            {
+                if (vNombre[i] == nombre)
+                {
+                    vNombre[i] = "";
+                    vTelef[i] = "";
+                    parar = true;
+                }
+            }
+        }
+
         private void btnAñadContac_Click(object sender, EventArgs e)
         {
             //Llamamos a la funcion para añadir el nombre
             //y telefono y que se guarde.            
-            LeerVNombreTelefono(vNombre, vTelefono);        
+            LeerVNombreTelefono(vNombre, vTelefono);
+        }
+
+        private void btnEliminarContacto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
