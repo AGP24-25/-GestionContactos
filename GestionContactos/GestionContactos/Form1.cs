@@ -15,6 +15,7 @@ namespace GestionContactos
 
         void LeerVNombreTelefono(string[] vNomb, string[] vTelef)
         {
+            int u;
             int i;
             bool parar = false;
             for (i = 0; i < Tam && !parar; i++)
