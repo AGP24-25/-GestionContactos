@@ -15,8 +15,7 @@ namespace GestionContactos
         string[] vTelefono = new string[Tam];
 
         void LeerVNombreTelefono(string[] vNomb, string[] vTelef)
-        {
-            int u;
+        {            
             int i;
             bool parar = false;
             for (i = 0; i < Tam && !parar; i++)
@@ -71,6 +70,21 @@ namespace GestionContactos
             }
             return parar;
         }
+        bool ModificarTelefono(string[] vNombre, string[] vTelef)
+        {
+            string nombre;
+            bool parar = false;
+            nombre = Interaction.InputBox("Introduzca nombre del contacto a modificar el telefono: ");
+            for (int i = 0; i < Tam && !parar; i++)
+            {
+                if (vNombre[i] == nombre)
+                {       
+                    vTelef[i] = Interaction.InputBox("Introduzca nuevo numero de telefono: ");
+                    parar = true;
+                }
+            }
+            return parar;
+        }
 
         private void btnAñadContac_Click(object sender, EventArgs e)
         {
@@ -88,6 +102,21 @@ namespace GestionContactos
             if (eliminado)
             {
                 MessageBox.Show("Contacto eliminado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error el contacto no existe");
+            }
+        }
+
+        private void btnModificarTLF_Click(object sender, EventArgs e)
+        {
+            //Realizado por Alejandro García
+            bool modificado;
+            modificado = ModificarTelefono(vNombre, vTelefono);
+            if (modificado)
+            {
+                MessageBox.Show("Contacto modificado correctamente");
             }
             else
             {
