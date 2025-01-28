@@ -21,7 +21,7 @@ namespace GestionContactos
             bool parar = false;
             for (i = 0; i < Tam && !parar; i++)
             {
-                if (vNomb[i] == null)
+                if (vNomb[i] == null || vNomb[i] == "")
                 {
                     string aux;
                     bool rep = false;
@@ -40,28 +40,6 @@ namespace GestionContactos
                     parar = true;
                 }
             }
-
-
-            /*int i = 0;
-            // Leemos todos los elementos del vector.
-            while (i < Tam)
-            {
-                string aux;
-                bool rep = false;
-                MessageBox.Show("Introducir la persona: " + i);
-                aux = Interaction.InputBox("Introduzca tu nombre: ");
-                rep = ComprobarIguales(aux, vNomb);
-                if (!rep)
-                {
-                    vNomb[i] = aux;
-                    i++;
-                    vTelef[i] = Interaction.InputBox("Introduzca telefono: ");
-                }
-                else
-                {
-                    MessageBox.Show("Persona ya introducida.");
-                }              
-            }   */
         }
 
         bool ComprobarIguales(string aux, string[] vNomb)
@@ -77,11 +55,11 @@ namespace GestionContactos
             return iguales;
         }
 
-        void EliminarContacto(string[] vNombre, string[] vTelef)
+        bool EliminarContacto(string[] vNombre, string[] vTelef)
         {
             string nombre;
             bool parar = false;
-            nombre = Interaction.InputBox("Introduzca nombre a borrar: ");
+            nombre = Interaction.InputBox("Introduzca nombre del contacto a borrar: ");
             for (int i = 0; i < Tam && !parar; i++)
             {
                 if (vNombre[i] == nombre)
@@ -91,18 +69,30 @@ namespace GestionContactos
                     parar = true;
                 }
             }
+            return parar;
         }
 
         private void btnAñadContac_Click(object sender, EventArgs e)
         {
             //Llamamos a la funcion para añadir el nombre
-            //y telefono y que se guarde.            
+            //y telefono y que se guarde.
+            //realizado por Alejandro Garcia
             LeerVNombreTelefono(vNombre, vTelefono);
         }
 
         private void btnEliminarContacto_Click(object sender, EventArgs e)
         {
-
+            //realizado por Britney Zambrano
+            bool eliminado;
+            eliminado = EliminarContacto(vNombre, vTelefono);
+            if (eliminado)
+            {
+                MessageBox.Show("Contacto eliminado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error el contacto no existe");
+            }
         }
     }
 }
